@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <style type="text/css">
+        BODY {
+            background: white; /* Цвет фона веб-страницы */
+        }
+        TABLE {
+            border: 2px solid black; /* Параметры рамки */
+        }
+        TD, TH {
+            padding: 5px; /* Поля вокруг содержимого таблицы */
+            border: 1px solid black; /* Параметры рамки */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+    <table>
+        <thead>
+        <tr>
+            <th> ID</th>
+            <th> NAME</th>
+            <th> BIRTH YEAR</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="u:${users}">
+                <tr>
+                    <td th:text="${u.getId()}"></td>
+                    <td><a th:href="@{/users/{id}(id=${u.getId()})}" th:text="${u.getFirstName()}"> </a> <a th:href="@{/users/{id}(id=${u.getId()})}" th:text="${u.getLastName()}"></a></td>
+                    <td th:text="${u.getBirthYear()}"></td>
+                </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+    <br/>
+    <hr/>
+    <a href="/users/new">ADD USER</a>
+
+</div>
+</body>
+</html>
